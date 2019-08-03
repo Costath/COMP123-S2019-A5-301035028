@@ -28,15 +28,16 @@ namespace COMP123_S2019_A5_301035028
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            splashForm = new SplashForm();
+            startForm = new StartForm();
             orderForm = new OrderForm();
             selectForm = new SelectForm();
-            startForm = new StartForm();
             productInfoForm = new ProductInfoForm();
-            splashForm = new SplashForm();
+            
             aboutBox = new AboutBox();
             //product = new Product();
 
-            Application.Run(orderForm);
+            Application.Run(splashForm);
         }
     }
 }

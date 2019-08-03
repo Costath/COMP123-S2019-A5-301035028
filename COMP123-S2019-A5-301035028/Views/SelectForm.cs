@@ -19,15 +19,30 @@ namespace COMP123_S2019_A5_301035028.Views
 
         private void SelectForm_Load(object sender, EventArgs e)
         {
-            using (var db = new ProductModel())
+            /*using (var db = new ProductModel())
             {
                 db.products.Load();
 
                 productBindingSource.DatSource = db.products.Local.ToBindingList();
-                //go to VS installer
-                //>Modify
-                //>LINQ to SQL Tools
             }
+            */
+        }
+
+        private void SelectFormNextButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Program.productInfoForm.Show();
+        }
+
+        private void SelectFormPrevButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Program.orderForm.Show();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
