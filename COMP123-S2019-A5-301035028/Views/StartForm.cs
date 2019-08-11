@@ -33,5 +33,11 @@ namespace COMP123_S2019_A5_301035028.Views
         {
             Application.Exit();
         }
+
+        private void NewOrderButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Program.selectForm.Show();
+        }
     }
 }

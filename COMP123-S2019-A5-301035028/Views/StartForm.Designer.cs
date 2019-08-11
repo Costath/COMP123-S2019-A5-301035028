@@ -41,18 +41,19 @@
             // 
             this.NewOrderButton.AutoSize = true;
             this.NewOrderButton.Location = new System.Drawing.Point(179, 213);
-            this.NewOrderButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.NewOrderButton.Margin = new System.Windows.Forms.Padding(6);
             this.NewOrderButton.Name = "NewOrderButton";
             this.NewOrderButton.Size = new System.Drawing.Size(196, 44);
             this.NewOrderButton.TabIndex = 0;
             this.NewOrderButton.Text = "Start a new order";
             this.NewOrderButton.UseVisualStyleBackColor = true;
+            this.NewOrderButton.Click += new System.EventHandler(this.NewOrderButton_Click);
             // 
             // LoadOrderButton
             // 
             this.LoadOrderButton.AutoSize = true;
             this.LoadOrderButton.Location = new System.Drawing.Point(448, 213);
-            this.LoadOrderButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.LoadOrderButton.Margin = new System.Windows.Forms.Padding(6);
             this.LoadOrderButton.Name = "LoadOrderButton";
             this.LoadOrderButton.Size = new System.Drawing.Size(196, 44);
             this.LoadOrderButton.TabIndex = 1;
@@ -63,7 +64,7 @@
             // 
             this.StartFormNextButton.AutoSize = true;
             this.StartFormNextButton.Location = new System.Drawing.Point(657, 302);
-            this.StartFormNextButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.StartFormNextButton.Margin = new System.Windows.Forms.Padding(6);
             this.StartFormNextButton.Name = "StartFormNextButton";
             this.StartFormNextButton.Size = new System.Drawing.Size(112, 44);
             this.StartFormNextButton.TabIndex = 2;
@@ -75,7 +76,7 @@
             // 
             this.StartFormPrevButton.AutoSize = true;
             this.StartFormPrevButton.Location = new System.Drawing.Point(15, 302);
-            this.StartFormPrevButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.StartFormPrevButton.Margin = new System.Windows.Forms.Padding(6);
             this.StartFormPrevButton.Name = "StartFormPrevButton";
             this.StartFormPrevButton.Size = new System.Drawing.Size(150, 44);
             this.StartFormPrevButton.TabIndex = 3;
@@ -87,7 +88,7 @@
             // 
             this.ExitButton.AutoSize = true;
             this.ExitButton.Location = new System.Drawing.Point(713, 11);
-            this.ExitButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ExitButton.Margin = new System.Windows.Forms.Padding(2);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(56, 35);
             this.ExitButton.TabIndex = 4;
@@ -98,7 +99,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(292, 63);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(236, 112);
             this.pictureBox1.TabIndex = 5;
@@ -117,7 +118,7 @@
             this.Controls.Add(this.LoadOrderButton);
             this.Controls.Add(this.NewOrderButton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "StartForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StartForm";

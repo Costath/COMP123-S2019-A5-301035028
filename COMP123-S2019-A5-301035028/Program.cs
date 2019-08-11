@@ -1,4 +1,5 @@
-﻿using COMP123_S2019_A5_301035028.Views;
+﻿using COMP123_S2019_A5_301035028.Models;
+using COMP123_S2019_A5_301035028.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,9 @@ using System.Windows.Forms;
 
 namespace COMP123_S2019_A5_301035028
 {
-    static class Program
+    public static class Program
     {
+        public static Product product;
         public static OrderForm orderForm;
         public static SelectForm selectForm;
         public static StartForm startForm;
@@ -28,6 +30,7 @@ namespace COMP123_S2019_A5_301035028
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            product = new Product();
             splashForm = new SplashForm();
             startForm = new StartForm();
             orderForm = new OrderForm();
