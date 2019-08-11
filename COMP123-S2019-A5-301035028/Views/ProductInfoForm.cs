@@ -35,9 +35,15 @@ namespace COMP123_S2019_A5_301035028.Views
             Application.Exit();
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void ProductInfoCancelButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ProductInfoForm_Load(object sender, EventArgs e)
+        {
+            
+            
         }
     }
 }

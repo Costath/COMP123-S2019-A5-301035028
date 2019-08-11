@@ -36,8 +36,17 @@ namespace COMP123_S2019_A5_301035028.Views
 
         private void NewOrderButton_Click(object sender, EventArgs e)
         {
-            Hide();
+            this.Hide();
             Program.selectForm.Show();
+        }
+
+        private void LoadOrderButton_Click(object sender, EventArgs e)
+        {
+            Program.productInfoForm.ProductInfoFormOpenFileDialog.FileName = "";
+            Program.productInfoForm.ProductInfoFormOpenFileDialog.Filter = "Text File (*.txt)|*.txt | All Files (*.*)|*.*";
+            Program.productInfoForm.ProductInfoFormOpenFileDialog.ShowDialog();
+            this.Hide();
+            Program.productInfoForm.Show();
         }
     }
 }

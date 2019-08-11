@@ -128,7 +128,7 @@
             // 
             this.OrderFormFinishButton.AutoSize = true;
             this.OrderFormFinishButton.Location = new System.Drawing.Point(629, 522);
-            this.OrderFormFinishButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.OrderFormFinishButton.Margin = new System.Windows.Forms.Padding(1);
             this.OrderFormFinishButton.Name = "OrderFormFinishButton";
             this.OrderFormFinishButton.Size = new System.Drawing.Size(57, 27);
             this.OrderFormFinishButton.TabIndex = 1;
@@ -181,19 +181,19 @@
             this.printToolStripMenuItem1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.printToolStripMenuItem1.Name = "printToolStripMenuItem1";
             this.printToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.printToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.printToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
             this.printToolStripMenuItem1.Text = "&Print";
             this.printToolStripMenuItem1.Click += new System.EventHandler(this.printToolStripMenuItem1_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(137, 6);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
             this.exitToolStripMenuItem1.Text = "E&xit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
@@ -235,7 +235,7 @@
             this.OrderFormMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.OrderFormMenuStrip.Name = "OrderFormMenuStrip";
             this.OrderFormMenuStrip.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
-            this.OrderFormMenuStrip.Size = new System.Drawing.Size(784, 24);
+            this.OrderFormMenuStrip.Size = new System.Drawing.Size(1008, 24);
             this.OrderFormMenuStrip.TabIndex = 0;
             this.OrderFormMenuStrip.Text = "menuStrip1";
             // 
@@ -958,7 +958,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(1008, 749);
             this.ControlBox = false;
             this.Controls.Add(this.OrderFormCancelButton);
             this.Controls.Add(this.OrderFormBackButton);
@@ -975,7 +975,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.OrderFormMenuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "OrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OrderForm";

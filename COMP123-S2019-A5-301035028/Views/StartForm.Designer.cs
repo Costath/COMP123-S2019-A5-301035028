@@ -57,8 +57,9 @@
             this.LoadOrderButton.Name = "LoadOrderButton";
             this.LoadOrderButton.Size = new System.Drawing.Size(196, 44);
             this.LoadOrderButton.TabIndex = 1;
-            this.LoadOrderButton.Text = "load a saved order";
+            this.LoadOrderButton.Text = "Load a saved order";
             this.LoadOrderButton.UseVisualStyleBackColor = true;
+            this.LoadOrderButton.Click += new System.EventHandler(this.LoadOrderButton_Click);
             // 
             // StartFormNextButton
             // 
