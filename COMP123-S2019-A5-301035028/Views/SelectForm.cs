@@ -22,15 +22,15 @@ namespace COMP123_S2019_A5_301035028.Views
 
         private void SelectForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dollarComputersDataSet.products' table. You can move, or remove it, as needed.
-            //this.productsTableAdapter.Fill(this.dollarComputersDataSet.products);
             using (var db = new ProductModel())
             {
                 db.products.Load();
 
                 productBindingSource.DataSource = db.products.Local.ToBindingList();
             }
-            
+            ProductDataGridView.Rows[0].Selected = false;
+            SelectedTextBox.Text = "";
+            NextButton.Enabled = false;
         }
 
         private void SelectFormNextButton_Click(object sender, EventArgs e)
@@ -50,19 +50,28 @@ namespace COMP123_S2019_A5_301035028.Views
             Application.Exit();
         }
 
-        private void ProductDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
+        private void NextButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Program.productInfoForm.Show();
+        }
+
+        private void ProductDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             NextButton.Enabled = true;
             try
             {
+                // SelectedTextBox.Text receives the value in 'Manufacturer' column
                 SelectedTextBox.Text = ProductDataGridView.SelectedRows[0].Cells[2].Value.ToString();
                 // appends a space to SelectedTextBox.Text if the last character of "Manufacturer" field is not a space
                 if (SelectedTextBox.Text.Substring(SelectedTextBox.Text.Length - 1) != " ")
                 {
                     SelectedTextBox.Text += " ";
                 }
+                // appends the value in 'Model' column to SelectedTextBox.Text
                 SelectedTextBox.Text += ProductDataGridView.SelectedRows[0].Cells[3].Value.ToString();
                 SelectedTextBox.Text += " $";
+                // appends the value in 'Cost' column to SelectedTextBox.Text
                 SelectedTextBox.Text += ProductDataGridView.SelectedRows[0].Cells[1].Value.ToString();
             }
             catch (ArgumentOutOfRangeException)
@@ -75,10 +84,9 @@ namespace COMP123_S2019_A5_301035028.Views
             }
         }
 
-        private void NextButton_Click(object sender, EventArgs e)
+        private void SelectForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Hide();
-            Program.productInfoForm.Show();
+            Application.Exit();
         }
     }
 }
