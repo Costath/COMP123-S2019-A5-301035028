@@ -19,8 +19,6 @@ namespace COMP123_S2019_A5_301035028
         public static SplashForm splashForm;
         public static AboutBox aboutBox;
 
-        //Global variables declaration
-        public static bool loadFromFile = false;
 
         /// <summary>
         /// The main entry point for the application.

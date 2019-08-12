@@ -14,6 +14,7 @@ namespace COMP123_S2019_A5_301035028.Views
 {
     public partial class StartForm : Form
     {
+        public bool loadFromFile = false;
         public StartForm()
         {
             InitializeComponent();
@@ -37,7 +38,7 @@ namespace COMP123_S2019_A5_301035028.Views
 
             if (Program.productInfoForm.ProductInfoFormOpenFileDialog.ShowDialog() == DialogResult.OK)
             {
-                Program.loadFromFile = true;
+                loadFromFile = true;
                 this.Hide();
                 Program.productInfoForm.Show();
             }

@@ -48,6 +48,9 @@ namespace COMP123_S2019_A5_301035028.Views
             power,
             webcam
         }
+
+        public List<string> loadedProductSpecs;
+
         public ProductInfoForm()
         {
             InitializeComponent();
@@ -66,10 +69,10 @@ namespace COMP123_S2019_A5_301035028.Views
 
         private void ProductInfoForm_VisibleChanged(object sender, EventArgs e)
         {
-
+            bool loadFromFile = Program.startForm.loadFromFile;
             try
             {
-                if (this.Visible && !Program.loadFromFile)
+                if (this.Visible && !loadFromFile)
                 {
                     var selectedRow = Program.selectForm.ProductDataGridView.SelectedRows[0];
                     ProductIDValueLabel.Text = selectedRow.Cells[(int)Product.productID].Value.ToString();
@@ -90,45 +93,45 @@ namespace COMP123_S2019_A5_301035028.Views
                     WebcamValueLabel.Text = selectedRow.Cells[(int)Product.webcam].Value.ToString();
 
                     ProductInfoNextButton.Enabled = true;
-
+                    loadedProductSpecs = null;
                     ProductInfoToolStripStatusLabel.Text = "";
                 }
-                else if (this.Visible && Program.loadFromFile)
+                else if (this.Visible && loadFromFile)
                 {
                     using (StreamReader streamReader = new StreamReader(Program.productInfoForm.ProductInfoFormOpenFileDialog.FileName))
                     {
                         string productRow;
-                        List<string> loadedProduct = new List<string> { };
+                        loadedProductSpecs = new List<string> { };
+
                         // Read all elements into the list.
                         while (streamReader.Peek() != -1)
                         {
                             productRow = streamReader.ReadLine();
-                            loadedProduct.Add(productRow);
+                            loadedProductSpecs.Add(productRow);
                         }
 
-                        ProductIDValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.productID];
-                        ConditionValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.condition];
-                        CostValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.cost];
-                        PlatformValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.platform];
-                        ManufacturerValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.manufacturer];
-                        OSValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.OS];
-                        ModelValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.model];
-                        MemoryValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.RAM_size];
-                        CPUBrandValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_brand];
-                        CPUTypeValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_type];
-                        LCDSizeValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.screensize];
-                        CPUNumberValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_number];
-                        CPUSpeedValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_speed];
-                        HDDValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.HDD_size];
-                        GPUTypeValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.GPU_Type];
-                        WebcamValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.webcam];
+                        ProductIDValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.productID];
+                        ConditionValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.condition];
+                        CostValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.cost];
+                        PlatformValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.platform];
+                        ManufacturerValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.manufacturer];
+                        OSValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.OS];
+                        ModelValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.model];
+                        MemoryValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.RAM_size];
+                        CPUBrandValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.CPU_brand];
+                        CPUTypeValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.CPU_type];
+                        LCDSizeValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.screensize];
+                        CPUNumberValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.CPU_number];
+                        CPUSpeedValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.CPU_speed];
+                        HDDValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.HDD_size];
+                        GPUTypeValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.GPU_Type];
+                        WebcamValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.webcam];
 
                         ProductInfoNextButton.Enabled = true;
-
+                        Debug.WriteLine("leu do arquivo (loadFromFile == TRUE)");
                         ProductInfoToolStripStatusLabel.Text = "Information successfully loaded from file.";
+                        Program.startForm.loadFromFile = false;
                     }
-                    
-                    Program.loadFromFile = false;
                 }
             }// Handles exception returned when no file is chosen or the file is not in accordance with Save format and don't let program crash on others Exceptions that may occur
             catch (Exception exception)
@@ -153,7 +156,7 @@ namespace COMP123_S2019_A5_301035028.Views
                 Debug.WriteLine(exception);
 
                 ProductInfoNextButton.Enabled = false;
-                Program.loadFromFile = false;
+                loadFromFile = false;
                 ProductInfoToolStripStatusLabel.Text = "Error opening the file.";
             }
         }
@@ -170,30 +173,31 @@ namespace COMP123_S2019_A5_301035028.Views
                     using (StreamReader streamReader = new StreamReader(Program.productInfoForm.ProductInfoFormOpenFileDialog.FileName))
                     {
                         string productRow;
-                        List<string> loadedProduct = new List<string> { };
+                        loadedProductSpecs = new List<string> { };
+
                         // Read all elements into the list.
                         while (streamReader.Peek() != -1)
                         {
                             productRow = streamReader.ReadLine();
-                            loadedProduct.Add(productRow);
+                            loadedProductSpecs.Add(productRow);
                         }
 
-                        ProductIDValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.productID];
-                        ConditionValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.condition];
-                        CostValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.cost];
-                        PlatformValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.platform];
-                        ManufacturerValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.manufacturer];
-                        OSValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.OS];
-                        ModelValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.model];
-                        MemoryValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.RAM_size];
-                        CPUBrandValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_brand];
-                        CPUTypeValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_type];
-                        LCDSizeValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.screensize];
-                        CPUNumberValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_number];
-                        CPUSpeedValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_speed];
-                        HDDValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.HDD_size];
-                        GPUTypeValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.GPU_Type];
-                        WebcamValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.webcam];
+                        ProductIDValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.productID];
+                        ConditionValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.condition];
+                        CostValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.cost];
+                        PlatformValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.platform];
+                        ManufacturerValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.manufacturer];
+                        OSValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.OS];
+                        ModelValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.model];
+                        MemoryValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.RAM_size];
+                        CPUBrandValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.CPU_brand];
+                        CPUTypeValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.CPU_type];
+                        LCDSizeValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.screensize];
+                        CPUNumberValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.CPU_number];
+                        CPUSpeedValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.CPU_speed];
+                        HDDValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.HDD_size];
+                        GPUTypeValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.GPU_Type];
+                        WebcamValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.webcam];
 
                         ProductInfoToolStripStatusLabel.Text = "Information successfully loaded from file.";
                     }
@@ -221,7 +225,7 @@ namespace COMP123_S2019_A5_301035028.Views
                     Debug.WriteLine(exception);
 
                     ProductInfoNextButton.Enabled = false;
-                    Program.loadFromFile = false;
+                    Program.startForm.loadFromFile = false;
                     ProductInfoToolStripStatusLabel.Text = "Error opening the file.";
                 }
             }
