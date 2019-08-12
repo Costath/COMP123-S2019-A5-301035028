@@ -53,19 +53,6 @@ namespace COMP123_S2019_A5_301035028.Views
             InitializeComponent();
         }
 
-        private void ProductInfoFormNextButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Program.startForm.Show();
-
-        }
-
-        private void ProductInfoFormPrevButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Program.selectForm.Show();
-        }
-
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -79,32 +66,34 @@ namespace COMP123_S2019_A5_301035028.Views
 
         private void ProductInfoForm_VisibleChanged(object sender, EventArgs e)
         {
-            if (this.Visible && !Program.loadFromFile)
+
+            try
             {
-                var selectedRow = Program.selectForm.ProductDataGridView.SelectedRows[0];
-                ProductIDValueLabel.Text = selectedRow.Cells[(int)Product.productID].Value.ToString();
-                ConditionValueLabel.Text = selectedRow.Cells[(int)Product.condition].Value.ToString();
-                CostValueLabel.Text = selectedRow.Cells[(int)Product.cost].Value.ToString();
-                PlatformValueLabel.Text = selectedRow.Cells[(int)Product.platform].Value.ToString();
-                ManufacturerValueLabel.Text = selectedRow.Cells[(int)Product.manufacturer].Value.ToString();
-                OSValueLabel.Text = selectedRow.Cells[(int)Product.OS].Value.ToString();
-                ModelValueLabel.Text = selectedRow.Cells[(int)Product.model].Value.ToString();
-                MemoryValueLabel.Text = selectedRow.Cells[(int)Product.RAM_size].Value.ToString();
-                CPUBrandValueLabel.Text = selectedRow.Cells[(int)Product.CPU_brand].Value.ToString();
-                CPUTypeValueLabel.Text = selectedRow.Cells[(int)Product.CPU_type].Value.ToString();
-                LCDSizeValueLabel.Text = selectedRow.Cells[(int)Product.screensize].Value.ToString();
-                CPUNumberValueLabel.Text = selectedRow.Cells[(int)Product.CPU_number].Value.ToString();
-                CPUSpeedValueLabel.Text = selectedRow.Cells[(int)Product.CPU_speed].Value.ToString();
-                HDDValueLabel.Text = selectedRow.Cells[(int)Product.HDD_size].Value.ToString();
-                GPUTypeValueLabel.Text = selectedRow.Cells[(int)Product.GPU_Type].Value.ToString();
-                WebcamValueLabel.Text = selectedRow.Cells[(int)Product.webcam].Value.ToString();
-            }
-            else if (this.Visible && Program.loadFromFile)
-            {
-                //////////////
-                // Handle exception returned when no file is chosen
-                //////////////
-                try
+                if (this.Visible && !Program.loadFromFile)
+                {
+                    var selectedRow = Program.selectForm.ProductDataGridView.SelectedRows[0];
+                    ProductIDValueLabel.Text = selectedRow.Cells[(int)Product.productID].Value.ToString();
+                    ConditionValueLabel.Text = selectedRow.Cells[(int)Product.condition].Value.ToString();
+                    CostValueLabel.Text = selectedRow.Cells[(int)Product.cost].Value.ToString();
+                    PlatformValueLabel.Text = selectedRow.Cells[(int)Product.platform].Value.ToString();
+                    ManufacturerValueLabel.Text = selectedRow.Cells[(int)Product.manufacturer].Value.ToString();
+                    OSValueLabel.Text = selectedRow.Cells[(int)Product.OS].Value.ToString();
+                    ModelValueLabel.Text = selectedRow.Cells[(int)Product.model].Value.ToString();
+                    MemoryValueLabel.Text = selectedRow.Cells[(int)Product.RAM_size].Value.ToString();
+                    CPUBrandValueLabel.Text = selectedRow.Cells[(int)Product.CPU_brand].Value.ToString();
+                    CPUTypeValueLabel.Text = selectedRow.Cells[(int)Product.CPU_type].Value.ToString();
+                    LCDSizeValueLabel.Text = selectedRow.Cells[(int)Product.screensize].Value.ToString();
+                    CPUNumberValueLabel.Text = selectedRow.Cells[(int)Product.CPU_number].Value.ToString();
+                    CPUSpeedValueLabel.Text = selectedRow.Cells[(int)Product.CPU_speed].Value.ToString();
+                    HDDValueLabel.Text = selectedRow.Cells[(int)Product.HDD_size].Value.ToString();
+                    GPUTypeValueLabel.Text = selectedRow.Cells[(int)Product.GPU_Type].Value.ToString();
+                    WebcamValueLabel.Text = selectedRow.Cells[(int)Product.webcam].Value.ToString();
+
+                    ProductInfoNextButton.Enabled = true;
+
+                    ProductInfoToolStripStatusLabel.Text = "";
+                }
+                else if (this.Visible && Program.loadFromFile)
                 {
                     using (StreamReader streamReader = new StreamReader(Program.productInfoForm.ProductInfoFormOpenFileDialog.FileName))
                     {
@@ -133,14 +122,39 @@ namespace COMP123_S2019_A5_301035028.Views
                         HDDValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.HDD_size];
                         GPUTypeValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.GPU_Type];
                         WebcamValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.webcam];
+
+                        ProductInfoNextButton.Enabled = true;
+
+                        ProductInfoToolStripStatusLabel.Text = "Information successfully loaded from file.";
                     }
+                    
+                    Program.loadFromFile = false;
                 }
-                catch (Exception exception)
-                {
-                    Debug.WriteLine(exception);
-                    MessageBox.Show("An error has occured. Check the file and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }// Handles exception returned when no file is chosen or the file is not in accordance with Save format and don't let program crash on others Exceptions that may occur
+            catch (Exception exception)
+            {
+                ProductIDValueLabel.Text = string.Empty;
+                ConditionValueLabel.Text = string.Empty;
+                CostValueLabel.Text = string.Empty;
+                PlatformValueLabel.Text = string.Empty;
+                ManufacturerValueLabel.Text = string.Empty;
+                OSValueLabel.Text = string.Empty;
+                ModelValueLabel.Text = string.Empty;
+                MemoryValueLabel.Text = string.Empty;
+                CPUBrandValueLabel.Text = string.Empty;
+                CPUTypeValueLabel.Text = string.Empty;
+                LCDSizeValueLabel.Text = string.Empty;
+                CPUNumberValueLabel.Text = string.Empty;
+                CPUSpeedValueLabel.Text = string.Empty;
+                HDDValueLabel.Text = string.Empty;
+                GPUTypeValueLabel.Text = string.Empty;
+                WebcamValueLabel.Text = string.Empty;
+
+                Debug.WriteLine(exception);
+
+                ProductInfoNextButton.Enabled = false;
                 Program.loadFromFile = false;
+                ProductInfoToolStripStatusLabel.Text = "Error opening the file.";
             }
         }
 
@@ -180,12 +194,35 @@ namespace COMP123_S2019_A5_301035028.Views
                         HDDValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.HDD_size];
                         GPUTypeValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.GPU_Type];
                         WebcamValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.webcam];
+
+                        ProductInfoToolStripStatusLabel.Text = "Information successfully loaded from file.";
                     }
+                    ProductInfoNextButton.Enabled = true;
                 }
                 catch (Exception exception)
                 {
+                    ProductIDValueLabel.Text = string.Empty;
+                    ConditionValueLabel.Text = string.Empty;
+                    CostValueLabel.Text = string.Empty;
+                    PlatformValueLabel.Text = string.Empty;
+                    ManufacturerValueLabel.Text = string.Empty;
+                    OSValueLabel.Text = string.Empty;
+                    ModelValueLabel.Text = string.Empty;
+                    MemoryValueLabel.Text = string.Empty;
+                    CPUBrandValueLabel.Text = string.Empty;
+                    CPUTypeValueLabel.Text = string.Empty;
+                    LCDSizeValueLabel.Text = string.Empty;
+                    CPUNumberValueLabel.Text = string.Empty;
+                    CPUSpeedValueLabel.Text = string.Empty;
+                    HDDValueLabel.Text = string.Empty;
+                    GPUTypeValueLabel.Text = string.Empty;
+                    WebcamValueLabel.Text = string.Empty;
+
                     Debug.WriteLine(exception);
-                    MessageBox.Show("An error has occured. Check the file and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    ProductInfoNextButton.Enabled = false;
+                    Program.loadFromFile = false;
+                    ProductInfoToolStripStatusLabel.Text = "Error opening the file.";
                 }
             }
         }
@@ -193,24 +230,41 @@ namespace COMP123_S2019_A5_301035028.Views
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ProductInfoFormSaveFileDialog.FileName = "Product.txt";
-            ProductInfoFormOpenFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            ProductInfoFormSaveFileDialog.ShowDialog();
+            ProductInfoFormOpenFileDialog.Filter = "Text Files (*.txt)|*.txt | All Files (*.*)|*.*";
 
-            // Open the File.StreamWriter 
-            using (StreamWriter streamWriter = new StreamWriter(ProductInfoFormSaveFileDialog.FileName, false))
+            try
             {
-                int NumberOfItems = Program.selectForm.ProductDataGridView.SelectedRows[0].Cells.Count;
-                var selectedRow = Program.selectForm.ProductDataGridView.SelectedRows[0];
-                for (int i = 0; i < NumberOfItems; i++)
+                if(ProductInfoFormSaveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    streamWriter.WriteLine(selectedRow.Cells[i].Value.ToString());
-                } // end for
-                // Close the file.
-                streamWriter.Close();
+                    // Open the File.StreamWriter 
+                    using (StreamWriter streamWriter = new StreamWriter(ProductInfoFormSaveFileDialog.FileName, false))
+                    {
+                        int NumberOfItems = Program.selectForm.ProductDataGridView.SelectedRows[0].Cells.Count;
+                        var selectedRow = Program.selectForm.ProductDataGridView.SelectedRows[0];
+                        for (int i = 0; i < NumberOfItems; i++)
+                        {
+                            streamWriter.WriteLine(selectedRow.Cells[i].Value.ToString());
+                        }
+                        // Close the file.
+                        streamWriter.Close();
+                        ProductInfoToolStripStatusLabel.Text = "File saved.";
+                    }
+                    // Save the items in the file
+                }
             }
-            // Save the items in the file
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception);
+                ProductInfoToolStripStatusLabel.Text = "Error saving the file.";
+            }
 
-            
+
+        }
+
+        private void ProductInfoNextButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Program.orderForm.Show();
         }
     }
 }

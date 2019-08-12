@@ -32,8 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
             this.OrderFormFinishButton = new System.Windows.Forms.Button();
             this.ProductPrintForm = new Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(this.components);
-            this.ProductInfoFormPrevButton = new System.Windows.Forms.Button();
-            this.ProductInfoFormNextButton = new System.Windows.Forms.Button();
             this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.printToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -142,28 +140,6 @@
             this.ProductPrintForm.PrintAction = System.Drawing.Printing.PrintAction.PrintToPrinter;
             this.ProductPrintForm.PrinterSettings = ((System.Drawing.Printing.PrinterSettings)(resources.GetObject("ProductPrintForm.PrinterSettings")));
             this.ProductPrintForm.PrintFileName = null;
-            // 
-            // ProductInfoFormPrevButton
-            // 
-            this.ProductInfoFormPrevButton.AutoSize = true;
-            this.ProductInfoFormPrevButton.Location = new System.Drawing.Point(12, 522);
-            this.ProductInfoFormPrevButton.Name = "ProductInfoFormPrevButton";
-            this.ProductInfoFormPrevButton.Size = new System.Drawing.Size(109, 27);
-            this.ProductInfoFormPrevButton.TabIndex = 9;
-            this.ProductInfoFormPrevButton.Text = "Previous Form";
-            this.ProductInfoFormPrevButton.UseVisualStyleBackColor = true;
-            this.ProductInfoFormPrevButton.Click += new System.EventHandler(this.ProductInfoFormPrevButton_Click);
-            // 
-            // ProductInfoFormNextButton
-            // 
-            this.ProductInfoFormNextButton.AutoSize = true;
-            this.ProductInfoFormNextButton.Location = new System.Drawing.Point(690, 522);
-            this.ProductInfoFormNextButton.Name = "ProductInfoFormNextButton";
-            this.ProductInfoFormNextButton.Size = new System.Drawing.Size(82, 27);
-            this.ProductInfoFormNextButton.TabIndex = 8;
-            this.ProductInfoFormNextButton.Text = "Next Form";
-            this.ProductInfoFormNextButton.UseVisualStyleBackColor = true;
-            this.ProductInfoFormNextButton.Click += new System.EventHandler(this.ProductInfoFormNextButton_Click);
             // 
             // fileToolStripMenuItem1
             // 
@@ -968,8 +944,6 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.ProductInfoFormPrevButton);
-            this.Controls.Add(this.ProductInfoFormNextButton);
             this.Controls.Add(this.OrderFormFinishButton);
             this.Controls.Add(this.OrderFormMenuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -1000,8 +974,6 @@
         #endregion
         private System.Windows.Forms.Button OrderFormFinishButton;
         private Microsoft.VisualBasic.PowerPacks.Printing.PrintForm ProductPrintForm;
-        private System.Windows.Forms.Button ProductInfoFormPrevButton;
-        private System.Windows.Forms.Button ProductInfoFormNextButton;
         private System.Windows.Forms.MenuStrip OrderFormMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem1;
