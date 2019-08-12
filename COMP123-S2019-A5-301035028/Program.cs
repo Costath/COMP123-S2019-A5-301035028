@@ -10,6 +10,7 @@ namespace COMP123_S2019_A5_301035028
 {
     public static class Program
     {
+        //Forms declaration
         public static Product product;
         public static OrderForm orderForm;
         public static SelectForm selectForm;
@@ -17,9 +18,9 @@ namespace COMP123_S2019_A5_301035028
         public static ProductInfoForm productInfoForm;
         public static SplashForm splashForm;
         public static AboutBox aboutBox;
-        ///// db instance
-        //public static Product product;
-        ///// 
+
+        //Global variables declaration
+        public static bool loadFromFile = false;
 
         /// <summary>
         /// The main entry point for the application.
@@ -36,9 +37,7 @@ namespace COMP123_S2019_A5_301035028
             orderForm = new OrderForm();
             selectForm = new SelectForm();
             productInfoForm = new ProductInfoForm();
-            
             aboutBox = new AboutBox();
-            //product = new Product();
 
             Application.Run(splashForm);
         }

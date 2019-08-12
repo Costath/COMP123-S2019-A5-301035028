@@ -79,7 +79,7 @@ namespace COMP123_S2019_A5_301035028.Views
 
         private void ProductInfoForm_VisibleChanged(object sender, EventArgs e)
         {
-            if (this.Visible)
+            if (this.Visible && !Program.loadFromFile)
             {
                 var selectedRow = Program.selectForm.ProductDataGridView.SelectedRows[0];
                 ProductIDValueLabel.Text = selectedRow.Cells[(int)Product.productID].Value.ToString();
@@ -99,19 +99,101 @@ namespace COMP123_S2019_A5_301035028.Views
                 GPUTypeValueLabel.Text = selectedRow.Cells[(int)Product.GPU_Type].Value.ToString();
                 WebcamValueLabel.Text = selectedRow.Cells[(int)Product.webcam].Value.ToString();
             }
+            else if (this.Visible && Program.loadFromFile)
+            {
+                //////////////
+                // Handle exception returned when no file is chosen
+                //////////////
+                try
+                {
+                    using (StreamReader streamReader = new StreamReader(Program.productInfoForm.ProductInfoFormOpenFileDialog.FileName))
+                    {
+                        string productRow;
+                        List<string> loadedProduct = new List<string> { };
+                        // Read all elements into the list.
+                        while (streamReader.Peek() != -1)
+                        {
+                            productRow = streamReader.ReadLine();
+                            loadedProduct.Add(productRow);
+                        }
+
+                        ProductIDValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.productID];
+                        ConditionValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.condition];
+                        CostValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.cost];
+                        PlatformValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.platform];
+                        ManufacturerValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.manufacturer];
+                        OSValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.OS];
+                        ModelValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.model];
+                        MemoryValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.RAM_size];
+                        CPUBrandValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_brand];
+                        CPUTypeValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_type];
+                        LCDSizeValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.screensize];
+                        CPUNumberValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_number];
+                        CPUSpeedValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_speed];
+                        HDDValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.HDD_size];
+                        GPUTypeValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.GPU_Type];
+                        WebcamValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.webcam];
+                    }
+                }
+                catch (Exception exception)
+                {
+                    Debug.WriteLine(exception);
+                    MessageBox.Show("An error has occured. Check the file and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                Program.loadFromFile = false;
+            }
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ProductInfoFormOpenFileDialog.FileName = "";
-            ProductInfoFormOpenFileDialog.Filter = "Text File (*.txt)|*.txt | All Files (*.*)|*.*";
-            ProductInfoFormOpenFileDialog.ShowDialog();
+            ProductInfoFormOpenFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+
+            if (ProductInfoFormOpenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    using (StreamReader streamReader = new StreamReader(Program.productInfoForm.ProductInfoFormOpenFileDialog.FileName))
+                    {
+                        string productRow;
+                        List<string> loadedProduct = new List<string> { };
+                        // Read all elements into the list.
+                        while (streamReader.Peek() != -1)
+                        {
+                            productRow = streamReader.ReadLine();
+                            loadedProduct.Add(productRow);
+                        }
+
+                        ProductIDValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.productID];
+                        ConditionValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.condition];
+                        CostValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.cost];
+                        PlatformValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.platform];
+                        ManufacturerValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.manufacturer];
+                        OSValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.OS];
+                        ModelValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.model];
+                        MemoryValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.RAM_size];
+                        CPUBrandValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_brand];
+                        CPUTypeValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_type];
+                        LCDSizeValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.screensize];
+                        CPUNumberValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_number];
+                        CPUSpeedValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.CPU_speed];
+                        HDDValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.HDD_size];
+                        GPUTypeValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.GPU_Type];
+                        WebcamValueLabel.Text = loadedProduct[(int)ProductInfoForm.Product.webcam];
+                    }
+                }
+                catch (Exception exception)
+                {
+                    Debug.WriteLine(exception);
+                    MessageBox.Show("An error has occured. Check the file and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ProductInfoFormSaveFileDialog.FileName = "Product.txt";
-            ProductInfoFormOpenFileDialog.Filter = "Text Documents (*.txt)|*.txt | All Files (*.*)|*.*";
+            ProductInfoFormOpenFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
             ProductInfoFormSaveFileDialog.ShowDialog();
 
             // Open the File.StreamWriter 
