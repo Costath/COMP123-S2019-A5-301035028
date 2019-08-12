@@ -496,6 +496,7 @@
             this.Text = "SelectForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SelectForm_FormClosing);
             this.Load += new System.EventHandler(this.SelectForm_Load);
+            this.VisibleChanged += new System.EventHandler(this.SelectForm_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.ProductDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dollarComputersDataSet)).EndInit();
@@ -507,7 +508,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView ProductDataGridView;
+        public System.Windows.Forms.DataGridView ProductDataGridView;
         private System.Windows.Forms.Button SelectFormPrevButton;
         private System.Windows.Forms.Button SelectFormNextButton;
         private System.Windows.Forms.Label SelectHardwareLabel;
