@@ -77,7 +77,8 @@ namespace COMP123_S2019_A5_301035028.Views
                     var selectedRow = Program.selectForm.ProductDataGridView.SelectedRows[0];
                     ProductIDValueLabel.Text = selectedRow.Cells[(int)Product.productID].Value.ToString();
                     ConditionValueLabel.Text = selectedRow.Cells[(int)Product.condition].Value.ToString();
-                    CostValueLabel.Text = selectedRow.Cells[(int)Product.cost].Value.ToString();
+                    string aux = selectedRow.Cells[(int)Product.cost].Value.ToString();
+                    CostValueLabel.Text = "$" + aux.Substring(0, aux.Length - 2);
                     PlatformValueLabel.Text = selectedRow.Cells[(int)Product.platform].Value.ToString();
                     ManufacturerValueLabel.Text = selectedRow.Cells[(int)Product.manufacturer].Value.ToString();
                     OSValueLabel.Text = selectedRow.Cells[(int)Product.OS].Value.ToString();
@@ -112,7 +113,7 @@ namespace COMP123_S2019_A5_301035028.Views
 
                         ProductIDValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.productID];
                         ConditionValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.condition];
-                        CostValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.cost];
+                        CostValueLabel.Text = "$" + loadedProductSpecs[(int)ProductInfoForm.Product.cost];
                         PlatformValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.platform];
                         ManufacturerValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.manufacturer];
                         OSValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.OS];
@@ -156,7 +157,7 @@ namespace COMP123_S2019_A5_301035028.Views
                 Debug.WriteLine(exception);
 
                 ProductInfoNextButton.Enabled = false;
-                loadFromFile = false;
+                Program.startForm.loadFromFile = false;
                 ProductInfoToolStripStatusLabel.Text = "Error opening the file.";
             }
         }
@@ -184,7 +185,7 @@ namespace COMP123_S2019_A5_301035028.Views
 
                         ProductIDValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.productID];
                         ConditionValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.condition];
-                        CostValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.cost];
+                        CostValueLabel.Text = "$" + loadedProductSpecs[(int)ProductInfoForm.Product.cost];
                         PlatformValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.platform];
                         ManufacturerValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.manufacturer];
                         OSValueLabel.Text = loadedProductSpecs[(int)ProductInfoForm.Product.OS];
@@ -247,7 +248,14 @@ namespace COMP123_S2019_A5_301035028.Views
                         var selectedRow = Program.selectForm.ProductDataGridView.SelectedRows[0];
                         for (int i = 0; i < NumberOfItems; i++)
                         {
-                            streamWriter.WriteLine(selectedRow.Cells[i].Value.ToString());
+                            if (i == (int)ProductInfoForm.Product.cost)
+                            {
+                                streamWriter.WriteLine(selectedRow.Cells[i].Value.ToString().Substring(0, selectedRow.Cells[i].Value.ToString().Length - 2));
+                            }
+                            else
+                            {
+                                streamWriter.WriteLine(selectedRow.Cells[i].Value.ToString());
+                            }
                         }
                         // Close the file.
                         streamWriter.Close();

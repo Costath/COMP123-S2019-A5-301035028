@@ -44,7 +44,7 @@
             this.OrderFormBackButton = new System.Windows.Forms.Button();
             this.OrderFormCancelButton = new System.Windows.Forms.Button();
             this.MainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ProductPictureBox = new System.Windows.Forms.PictureBox();
             this.SystemComponentsGroupBox = new System.Windows.Forms.GroupBox();
             this.SystemCompoinentsTableLayoutPanelB = new System.Windows.Forms.TableLayoutPanel();
             this.LCDSizeLabel = new System.Windows.Forms.Label();
@@ -87,9 +87,12 @@
             this.SalesTaxDataLabel = new System.Windows.Forms.Label();
             this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.YourPriceLineShape = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.BackButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.FinishButton = new System.Windows.Forms.Button();
             this.OrderFormMenuStrip.SuspendLayout();
             this.MainTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductPictureBox)).BeginInit();
             this.SystemComponentsGroupBox.SuspendLayout();
             this.SystemCompoinentsTableLayoutPanelB.SuspendLayout();
             this.SystemCompoinentsTableLayoutPanelA.SuspendLayout();
@@ -113,7 +116,7 @@
             // 
             this.ProductPrintForm.DocumentName = "document";
             this.ProductPrintForm.Form = this;
-            this.ProductPrintForm.PrintAction = System.Drawing.Printing.PrintAction.PrintToPrinter;
+            this.ProductPrintForm.PrintAction = System.Drawing.Printing.PrintAction.PrintToPreview;
             this.ProductPrintForm.PrinterSettings = ((System.Drawing.Printing.PrinterSettings)(resources.GetObject("ProductPrintForm.PrinterSettings")));
             this.ProductPrintForm.PrintFileName = null;
             // 
@@ -133,21 +136,21 @@
             this.PrintToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem";
             this.PrintToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.PrintToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.PrintToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.PrintToolStripMenuItem.Text = "&Print";
-            this.PrintToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem1_Click);
+            this.PrintToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItem1_Click);
             // 
             // ToolStripSeparator
             // 
             this.ToolStripSeparator.Name = "ToolStripSeparator";
-            this.ToolStripSeparator.Size = new System.Drawing.Size(137, 6);
+            this.ToolStripSeparator.Size = new System.Drawing.Size(177, 6);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ExitToolStripMenuItem.Text = "E&xit";
-            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -226,9 +229,12 @@
             this.MainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
             this.MainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
             this.MainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.MainTableLayoutPanel.Controls.Add(this.pictureBox1, 4, 0);
+            this.MainTableLayoutPanel.Controls.Add(this.ProductPictureBox, 4, 0);
             this.MainTableLayoutPanel.Controls.Add(this.SystemComponentsGroupBox, 0, 0);
             this.MainTableLayoutPanel.Controls.Add(this.YourPriceGroupBox, 4, 7);
+            this.MainTableLayoutPanel.Controls.Add(this.CancelButton, 4, 13);
+            this.MainTableLayoutPanel.Controls.Add(this.BackButton, 5, 13);
+            this.MainTableLayoutPanel.Controls.Add(this.FinishButton, 6, 13);
             this.MainTableLayoutPanel.Location = new System.Drawing.Point(0, 37);
             this.MainTableLayoutPanel.Name = "MainTableLayoutPanel";
             this.MainTableLayoutPanel.RowCount = 14;
@@ -249,18 +255,18 @@
             this.MainTableLayoutPanel.Size = new System.Drawing.Size(797, 349);
             this.MainTableLayoutPanel.TabIndex = 20;
             // 
-            // pictureBox1
+            // ProductPictureBox
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MainTableLayoutPanel.SetColumnSpan(this.pictureBox1, 2);
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(455, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.MainTableLayoutPanel.SetRowSpan(this.pictureBox1, 6);
-            this.pictureBox1.Size = new System.Drawing.Size(145, 138);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 52;
-            this.pictureBox1.TabStop = false;
+            this.ProductPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MainTableLayoutPanel.SetColumnSpan(this.ProductPictureBox, 2);
+            this.ProductPictureBox.Image = global::COMP123_S2019_A5_301035028.Properties.Resources.laptop;
+            this.ProductPictureBox.Location = new System.Drawing.Point(455, 3);
+            this.ProductPictureBox.Name = "ProductPictureBox";
+            this.MainTableLayoutPanel.SetRowSpan(this.ProductPictureBox, 6);
+            this.ProductPictureBox.Size = new System.Drawing.Size(220, 138);
+            this.ProductPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ProductPictureBox.TabIndex = 52;
+            this.ProductPictureBox.TabStop = false;
             // 
             // SystemComponentsGroupBox
             // 
@@ -852,6 +858,42 @@
             this.YourPriceLineShape.Y1 = 56;
             this.YourPriceLineShape.Y2 = 56;
             // 
+            // BackButton
+            // 
+            this.BackButton.AutoSize = true;
+            this.BackButton.Location = new System.Drawing.Point(571, 318);
+            this.BackButton.Margin = new System.Windows.Forms.Padding(6);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(101, 25);
+            this.BackButton.TabIndex = 54;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.BackToolStripMenuItem_Click);
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.AutoSize = true;
+            this.CancelButton.Location = new System.Drawing.Point(458, 318);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(6);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(96, 25);
+            this.CancelButton.TabIndex = 55;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // FinishButton
+            // 
+            this.FinishButton.AutoSize = true;
+            this.FinishButton.Location = new System.Drawing.Point(684, 318);
+            this.FinishButton.Margin = new System.Windows.Forms.Padding(6);
+            this.FinishButton.Name = "FinishButton";
+            this.FinishButton.Size = new System.Drawing.Size(101, 25);
+            this.FinishButton.TabIndex = 54;
+            this.FinishButton.Text = "Finish";
+            this.FinishButton.UseVisualStyleBackColor = true;
+            this.FinishButton.Click += new System.EventHandler(this.FinishButton_Click);
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -874,7 +916,8 @@
             this.OrderFormMenuStrip.ResumeLayout(false);
             this.OrderFormMenuStrip.PerformLayout();
             this.MainTableLayoutPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.MainTableLayoutPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductPictureBox)).EndInit();
             this.SystemComponentsGroupBox.ResumeLayout(false);
             this.SystemCompoinentsTableLayoutPanelB.ResumeLayout(false);
             this.SystemCompoinentsTableLayoutPanelB.PerformLayout();
@@ -936,7 +979,7 @@
         private System.Windows.Forms.Label ManufacturerDataLabel;
         private System.Windows.Forms.Label PlatformDataLabel;
         private System.Windows.Forms.Label ConditionDataLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox ProductPictureBox;
         private System.Windows.Forms.GroupBox YourPriceGroupBox;
         private System.Windows.Forms.TableLayoutPanel YourPriceTableLayoutPanelB;
         private System.Windows.Forms.Label TotalLabel;
@@ -948,6 +991,9 @@
         private System.Windows.Forms.Label SalesTaxDataLabel;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer2;
         private Microsoft.VisualBasic.PowerPacks.LineShape YourPriceLineShape;
+        private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button FinishButton;
     }
 }
 

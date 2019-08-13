@@ -19,13 +19,15 @@ namespace COMP123_S2019_A5_301035028.Views
             InitializeComponent();
         }
 
-        private void printToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void PrintToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ProductPrintForm.PrintAction = PrintAction.PrintToPreview;
-            ProductPrintForm.Print();
+            //ProductPrintForm.PrintAction = PrintAction.PrintToPreview;
+            //ProductPrintForm.Print();
+
+            MessageBox.Show("Your selection is printing", "Printing Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -54,9 +56,20 @@ namespace COMP123_S2019_A5_301035028.Views
                 HDDDataLabel.Text = selectedRow.Cells[(int)Product.HDD_size].Value.ToString();
                 GPUTypeDataLabel.Text = selectedRow.Cells[(int)Product.GPU_Type].Value.ToString();
                 WebcamDataLabel.Text = selectedRow.Cells[(int)Product.webcam].Value.ToString();
-                PriceDataLabel.Text = selectedRow.Cells[(int)Product.cost].Value.ToString();
-                SalesTaxDataLabel.Text = (float.Parse(PriceDataLabel.Text) * 0.13).ToString();
-                TotalDataLabel.Text = (float.Parse(PriceDataLabel.Text) * 1.13).ToString();
+                // Removes the 2 extra zeros from the data and concatenates with a "$"
+                string aux = selectedRow.Cells[(int)Product.cost].Value.ToString(); // auxiliary string to make the code more readable
+                PriceDataLabel.Text = "$" + aux.Substring(0, aux.Length - 2);
+                SalesTaxDataLabel.Text = (float.Parse(PriceDataLabel.Text.Substring(1)) * 0.13).ToString("c2");
+                TotalDataLabel.Text = (float.Parse(PriceDataLabel.Text.Substring(1)) * 1.13).ToString("c2");
+
+                if (PlatformDataLabel.Text == "Desktop PC")
+                {
+                    ProductPictureBox.Image = Properties.Resources.desktop;
+                }
+                else if (PlatformDataLabel.Text == "Laptop")
+                {
+                    ProductPictureBox.Image = Properties.Resources.laptop;
+                }
             }
             else if (this.Visible && loadedProduct != null)
             {
@@ -73,9 +86,10 @@ namespace COMP123_S2019_A5_301035028.Views
                 HDDDataLabel.Text = loadedProduct[(int)Product.HDD_size];
                 GPUTypeDataLabel.Text = loadedProduct[(int)Product.GPU_Type];
                 WebcamDataLabel.Text = loadedProduct[(int)Product.webcam];
-                PriceDataLabel.Text = loadedProduct[(int)Product.cost];
-                SalesTaxDataLabel.Text = (float.Parse(PriceDataLabel.Text) * 0.13).ToString();
-                TotalDataLabel.Text = (float.Parse(PriceDataLabel.Text) * 1.13).ToString();
+                string aux = loadedProduct[(int)Product.cost]; // auxiliary string to make the code more readable
+                PriceDataLabel.Text = "$" + aux.Substring(0, aux.Length - 2);
+                SalesTaxDataLabel.Text = (float.Parse(PriceDataLabel.Text.Substring(1)) * 0.13).ToString("c2");
+                TotalDataLabel.Text = (float.Parse(PriceDataLabel.Text.Substring(1)) * 1.13).ToString("c2");
             }
         }
 
@@ -83,6 +97,12 @@ namespace COMP123_S2019_A5_301035028.Views
         {
             this.Hide();
             Program.productInfoForm.Show();
+        }
+
+        private void FinishButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Thanks for your business. Your order will be processed in 7 - 10 business days.", "Order confirmed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Application.Exit();
         }
     }
 }

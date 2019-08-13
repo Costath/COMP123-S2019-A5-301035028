@@ -35,17 +35,6 @@ namespace COMP123_S2019_A5_301035028.Views
             }
         }
         
-        private void SelectFormNextButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Program.productInfoForm.Show();
-        }
-
-        private void SelectFormPrevButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Program.orderForm.Show();
-        }
         /// <summary>
         /// Handles Click event of CancelButton.
         /// </summary>
@@ -86,7 +75,8 @@ namespace COMP123_S2019_A5_301035028.Views
                 SelectedTextBox.Text += ProductDataGridView.SelectedRows[0].Cells[3].Value.ToString();
                 SelectedTextBox.Text += " $";
                 // appends the value in 'Cost' column to SelectedTextBox.Text
-                SelectedTextBox.Text += ProductDataGridView.SelectedRows[0].Cells[1].Value.ToString();
+                string aux = ProductDataGridView.SelectedRows[0].Cells[1].Value.ToString(); // auxiliary string to make the code more readable
+                SelectedTextBox.Text += aux.Substring(0, aux.Length);
             }
             catch (ArgumentOutOfRangeException)
             {

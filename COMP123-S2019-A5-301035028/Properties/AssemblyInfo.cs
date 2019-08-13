@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("COMP123-S2019-A5-301035028")]
-[assembly: AssemblyDescription("Computer retailer")]
+[assembly: AssemblyDescription("Canadian Computer Retailer. www.DollarComputers.ca +1 437 123-1234")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Dollar Computers.")]
 [assembly: AssemblyProduct("COMP123-S2019-A5-301035028")]
