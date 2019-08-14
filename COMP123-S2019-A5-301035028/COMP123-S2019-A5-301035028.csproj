@@ -159,12 +159,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\Logo.png" />
+    <None Include="Resources\Computer-money.jpg" />
     <None Include="Resources\laptop.png" />
     <None Include="Resources\desktop.png" />
   </ItemGroup>

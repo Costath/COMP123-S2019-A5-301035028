@@ -87,8 +87,8 @@
             this.SalesTaxDataLabel = new System.Windows.Forms.Label();
             this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.YourPriceLineShape = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.BackButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.BackButton = new System.Windows.Forms.Button();
             this.FinishButton = new System.Windows.Forms.Button();
             this.OrderFormMenuStrip.SuspendLayout();
             this.MainTableLayoutPanel.SuspendLayout();
@@ -136,19 +136,19 @@
             this.PrintToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem";
             this.PrintToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.PrintToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.PrintToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.PrintToolStripMenuItem.Text = "&Print";
-            this.PrintToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItem1_Click);
+            this.PrintToolStripMenuItem.Click += new System.EventHandler(this.PrintToolStripMenuItem_Click);
             // 
             // ToolStripSeparator
             // 
             this.ToolStripSeparator.Name = "ToolStripSeparator";
-            this.ToolStripSeparator.Size = new System.Drawing.Size(177, 6);
+            this.ToolStripSeparator.Size = new System.Drawing.Size(137, 6);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.ExitToolStripMenuItem.Text = "E&xit";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -858,18 +858,6 @@
             this.YourPriceLineShape.Y1 = 56;
             this.YourPriceLineShape.Y2 = 56;
             // 
-            // BackButton
-            // 
-            this.BackButton.AutoSize = true;
-            this.BackButton.Location = new System.Drawing.Point(571, 318);
-            this.BackButton.Margin = new System.Windows.Forms.Padding(6);
-            this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(101, 25);
-            this.BackButton.TabIndex = 54;
-            this.BackButton.Text = "Back";
-            this.BackButton.UseVisualStyleBackColor = true;
-            this.BackButton.Click += new System.EventHandler(this.BackToolStripMenuItem_Click);
-            // 
             // CancelButton
             // 
             this.CancelButton.AutoSize = true;
@@ -881,6 +869,18 @@
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // BackButton
+            // 
+            this.BackButton.AutoSize = true;
+            this.BackButton.Location = new System.Drawing.Point(571, 318);
+            this.BackButton.Margin = new System.Windows.Forms.Padding(6);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(101, 25);
+            this.BackButton.TabIndex = 54;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.BackToolStripMenuItem_Click);
             // 
             // FinishButton
             // 
@@ -907,6 +907,7 @@
             this.Controls.Add(this.OrderFormMenuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.OrderFormMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "OrderForm";

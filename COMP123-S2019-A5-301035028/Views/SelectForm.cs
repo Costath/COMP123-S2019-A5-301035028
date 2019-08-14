@@ -11,8 +11,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*
+ * App name: Dollar Computers Order App
+ * Author's name: Thales Costa
+ * Student ID: 301035028
+ * App creation date: August 2019
+ * 
+ */
+
 namespace COMP123_S2019_A5_301035028.Views
 {
+    /// <summary>
+    /// Implements the SelectForm Form
+    /// </summary>
     public partial class SelectForm : Form
     {
         public SelectForm()
@@ -20,23 +31,23 @@ namespace COMP123_S2019_A5_301035028.Views
             InitializeComponent();
         }
         /// <summary>
-        /// Handles Load event of SelectForm
+        /// This is the event handler for the SelectForm_Load event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SelectForm_Load(object sender, EventArgs e)
         {
             // loads db.products and assigns to ProductDataGridView data source
-            using (var db = new ProductModel())
+            using (var _db = new ProductModel())
             {
-                db.products.Load();
+                _db.products.Load();
 
-                productBindingSource.DataSource = db.products.Local.ToBindingList();
+                productBindingSource.DataSource = _db.products.Local.ToBindingList();
             }
         }
-        
+
         /// <summary>
-        /// Handles Click event of CancelButton.
+        /// This is the event handler for the CancelButton_Click event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -45,7 +56,7 @@ namespace COMP123_S2019_A5_301035028.Views
             Application.Exit();
         }
         /// <summary>
-        /// Handles Click event of NextButton.
+        /// This is the event handler for the NextButton_Click event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -55,7 +66,7 @@ namespace COMP123_S2019_A5_301035028.Views
             Program.productInfoForm.Show();
         }
         /// <summary>
-        /// Handles SelectionChanged event of ProductDataGridView.
+        /// This is the event handler for the ProductDataGridView_SelectionChanged event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -75,8 +86,8 @@ namespace COMP123_S2019_A5_301035028.Views
                 SelectedTextBox.Text += ProductDataGridView.SelectedRows[0].Cells[3].Value.ToString();
                 SelectedTextBox.Text += " $";
                 // appends the value in 'Cost' column to SelectedTextBox.Text
-                string aux = ProductDataGridView.SelectedRows[0].Cells[1].Value.ToString(); // auxiliary string to make the code more readable
-                SelectedTextBox.Text += aux.Substring(0, aux.Length);
+                string _aux = ProductDataGridView.SelectedRows[0].Cells[1].Value.ToString(); // auxiliary string to make the code more readable
+                SelectedTextBox.Text += _aux.Substring(0, _aux.Length - 2);
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -88,7 +99,7 @@ namespace COMP123_S2019_A5_301035028.Views
             }
         }
         /// <summary>
-        /// Handles ForClosing event of SelectForm
+        /// This is the event handler for the SelectForm_FormClosing event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -96,12 +107,17 @@ namespace COMP123_S2019_A5_301035028.Views
         {
             Application.Exit();
         }
-
+        /// <summary>
+        /// This is the event handler for the SelectForm_VisibleChanged event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SelectForm_VisibleChanged(object sender, EventArgs e)
         {
             if (this.Visible)
             {
-                /* This assures no row is selected when the form is showed*/
+                /* As ProductDataGridView has Multiselect option off, is will always have only index 0. 
+                 * The below line assures no row is selected when the form is showed */
                 ProductDataGridView.SelectedRows[0].Selected = false;
                 SelectedTextBox.Text = "";
                 // assures that NextButton is disabled disabled

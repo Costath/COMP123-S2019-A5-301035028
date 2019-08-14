@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectForm));
             this.ProductDataGridView = new System.Windows.Forms.DataGridView();
             this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dollarComputersDataSet = new COMP123_S2019_A5_301035028.DollarComputersDataSet();
@@ -462,6 +463,8 @@
             this.Controls.Add(this.SelectHardwareLabel);
             this.Controls.Add(this.ProductDataGridView);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "SelectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

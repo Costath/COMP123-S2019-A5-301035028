@@ -7,8 +7,20 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*
+ * App name: Dollar Computers Order App
+ * Author's name: Thales Costa
+ * Student ID: 301035028
+ * App creation date: August 2019
+ * 
+ */
+
 namespace COMP123_S2019_A5_301035028.Views
 {
+
+    /// <summary>
+    /// Implements the AboutBox Form
+    /// </summary>
     public partial class AboutBox : Form
     {
         public AboutBox()

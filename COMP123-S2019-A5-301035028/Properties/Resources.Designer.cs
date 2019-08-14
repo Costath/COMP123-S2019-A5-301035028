@@ -63,6 +63,16 @@ namespace COMP123_S2019_A5_301035028.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Computer_money {
+            get {
+                object obj = ResourceManager.GetObject("Computer-money", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap desktop {
             get {
                 object obj = ResourceManager.GetObject("desktop", resourceCulture);
@@ -76,16 +86,6 @@ namespace COMP123_S2019_A5_301035028.Properties {
         internal static System.Drawing.Bitmap laptop {
             get {
                 object obj = ResourceManager.GetObject("laptop", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Logo {
-            get {
-                object obj = ResourceManager.GetObject("Logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
